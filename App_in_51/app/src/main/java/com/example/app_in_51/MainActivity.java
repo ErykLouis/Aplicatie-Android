@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private Button register_button;
     private TextInputEditText username;
     private TextInputEditText password;
+    public static final String NAME_KEY="name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(ValidateFields()) {
-                    Intent intent = new Intent(getApplicationContext(), GalleryActivity.class);
+                    Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
+                    Toast.makeText(MainActivity.this,username.getText().toString(),Toast.LENGTH_SHORT).show();
+                    intent.putExtra(NAME_KEY, MainActivity.this.username.getText().toString());
                     startActivity(intent);
                 }
             }
