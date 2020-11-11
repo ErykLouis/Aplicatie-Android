@@ -22,7 +22,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText password;
     private TextInputEditText repeat_password;
     private TextInputEditText email;
-
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
@@ -69,9 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         //Validare match parole
-        Editable pass = password.getText();
-        Editable rep = repeat_password.getText();
-        if(pass != rep)
+        String pass = password.getText().toString();
+        String rep = repeat_password.getText().toString();
+        if(!pass.equals(rep))
         {
             Toast.makeText(getApplicationContext(),"Your Password should be the same",Toast.LENGTH_SHORT).show();
             return false;

@@ -23,4 +23,7 @@
     <string name="sculptures">Sculptures</string>
     <string name="buy_art_objects">Buy Art Objects</string>
     <string name="sell_art_object">Sell Art Object</string>
+
+    <!-- Strings used inside java classes -->
+    <string name="username_key">name</string>
 </resources>

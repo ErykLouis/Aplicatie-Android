@@ -31,7 +31,7 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
         configNavigation();
         Intent intent=getIntent();
-        userName=intent.getStringExtra(MainActivity.NAME_KEY);
+        userName=intent.getStringExtra(MainActivity.USERNAME_KEY);
         currentFragment = new MyGalleryFragment();
         addNavigationListener();
     }
