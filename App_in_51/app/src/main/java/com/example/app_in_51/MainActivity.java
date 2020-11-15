@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(ValidateFields()) {
                     Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
-                    Toast.makeText(MainActivity.this,username.getText().toString(),Toast.LENGTH_SHORT).show();
                     intent.putExtra(USERNAME_KEY, MainActivity.this.username.getText().toString());
                     startActivity(intent);
                 }

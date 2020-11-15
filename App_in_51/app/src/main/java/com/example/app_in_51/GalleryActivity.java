@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -53,23 +55,34 @@ public class GalleryActivity extends AppCompatActivity {
     private void addNavigationListener(){
         navigationView = findViewById(R.id.nav_view);
         View headerLayout=navigationView.getHeaderView(0);
-        TextView text=(TextView) headerLayout.findViewById(R.id.username);
-        Toast.makeText(this,userName,Toast.LENGTH_SHORT).show();
+        TextView text=headerLayout.findViewById(R.id.username);
         text.setText(userName);
+        View includedLayout=findViewById(R.id.gallery_content);
+        final View frameContainer=includedLayout.findViewById(R.id.main_frame_container);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                FragmentManager fm=getSupportFragmentManager();
+                FragmentTransaction transaction=fm.beginTransaction();
                 if(menuItem.getItemId() == R.id.nav_paintings){
                     currentFragment = new PaintingsFragment();
+                    transaction.replace(frameContainer.getId(),currentFragment);
+                    transaction.commit();
                 }
                 else if(menuItem.getItemId() == R.id.nav_sculptures){
                     currentFragment = new SculpturesFragment();
+                    transaction.replace(frameContainer.getId(),currentFragment);
+                    transaction.commit();
                 }
                 else if(menuItem.getItemId() == R.id.nav_sell){
                     currentFragment = new SellArtFragment();
+                    transaction.replace(frameContainer.getId(),currentFragment);
+                    transaction.commit();
                 }
                 else if(menuItem.getItemId() == R.id.nav_buy){
                     currentFragment = new BuyArtFragment();
+                    transaction.replace(frameContainer.getId(),currentFragment);
+                    transaction.commit();
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

@@ -23,7 +23,11 @@
     <string name="sculptures">Sculptures</string>
     <string name="buy_art_objects">Buy Art Objects</string>
     <string name="sell_art_object">Sell Art Object</string>
+    <string name="show_more_art_object">Show more</string>
+    <string name="contact_owner">Contact owner</string>
 
     <!-- Strings used inside java classes -->
     <string name="username_key">name</string>
+    <string name="art_object_ad_key">artObject</string>
+    <string name="placeholder_price">4000$</string>
 </resources>
