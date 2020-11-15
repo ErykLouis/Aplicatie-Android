@@ -4,24 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
     private Button login_button;
     private Button register_button;
     private TextInputEditText username;
     private TextInputEditText password;
+    public static String USERNAME_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        USERNAME_KEY =getApplicationContext().getString(R.string.username_key);
         setContentView(R.layout.activity_main);
         InitComponents();
 
@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(ValidateFields()) {
-                    Intent intent = new Intent(getApplicationContext(), GalleryActivity.class);
+                    Intent intent = new Intent(MainActivity.this, GalleryActivity.class);
+                    intent.putExtra(USERNAME_KEY, MainActivity.this.username.getText().toString());
                     startActivity(intent);
                 }
             }
